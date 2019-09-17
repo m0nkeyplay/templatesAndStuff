@@ -10,10 +10,11 @@ ap.add_argument("-p", "--port", required=True, help="What port to scan")
 args = vars(ap.parse_args())
 
 def scan_port(host,port):
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    result = sock.connect_ex((host, port))
+    print("Checking %s:%s..."%(myHost,myPort))
     myPort = str(port)
-    myHost = host.rstrip()
+    myHost = host.strip()
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    result = sock.connect_ex((myHost, port))
     screenText = myHost+':'+myPort
     logText = myHost+'\n'
     if result == 0:
@@ -26,7 +27,7 @@ def scan_port(host,port):
     
 
 if not os.path.isfile(args["hostlist"]):
-    print('\n\nWe can\'t find/open %s.  Please check that it\'s a valid file.\n\n'%hostlist)
+    print("\n\nWe can't find/open %s.  Please check that it's a valid file.\n\n"%hostlist)
 else:
     openResults = open(args['hostlist']+'.open.'+args["port"]+'.results.txt','w')
     closedResults = open(args['hostlist']+'.closed.'+args["port"]+'.results.txt','w')
