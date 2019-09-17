@@ -5,4 +5,4 @@ connectTemplate.py -- get ready to connect to a machine.  Simple stuff that's ne
 
 portscan.py -- take a list of hosts and check to see if a port is open on them.  writes it out to an open and a closed file for easier review.  
 
-**usage** `python portscan -hl path/to/list -p port`
+**usage** `python portscan.py -hl path/to/list -p port`
